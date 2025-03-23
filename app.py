@@ -54,6 +54,17 @@ def plot():
     img.seek(0)
 
     return Response(img.getvalue(), mimetype='image/png')
+@app.route("/")
+def home():
+    return """
+    <html>
+        <head><title>RadShield Monitoring</title></head>
+        <body style="background-color:#121212; color:white; text-align:center; font-family:sans-serif;">
+            <h1>📡 RadShield Monitoring Dashboard</h1>
+            <img src='/plot.png' alt='Monitoring plot' style='width:90%; max-width:900px; border:2px solid white; border-radius:10px;'>
+        </body>
+    </html>
+    """
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
